@@ -1,14 +1,14 @@
 # Шаги
 
-## Выбрали `git-lfs` как систему управления крупными файлами
+## Выбрал `git-lfs` как систему версионирования
 
-## Устанавливаем `git-lfs`
+## Устанавливаем `git-lfs` (Arch Linux btw)
 
 ```bash
 yay -S git-lfs
 ```
 
-## Инициалиизируем `git-lfs` внутри проекта
+## Инициализируем `git-lfs` внутри проекта
 
 ```bash
 git lfs install
@@ -20,23 +20,32 @@ git lfs install
 git lfs track "*.csv"
 ```
 
-Автоматически добавился файл `.gitattributes`
+Автоматически добавился файл `.gitattributes`:
 
-`*.csv filter=lfs diff=lfs merge=lfs -text`
+```txt
+*.csv filter=lfs diff=lfs merge=lfs -text
+```
 
-## Если хотим добавить - стандартный подход
+## Если хотим добавить файлы - стандартный подход
 
 ```bash
-git add imdb.csv
+git add hw2/imdb.csv
 git commit -m "added imdb dataset"
 ```
 
 ## Копирование удаленного проекта локально
 
 ```bash
-git pull
-git lfs pull - подтянет все lfs файлы
+git pull `url`
+git lfs clone `url` - подтянет все lfs файлы
 ```
+
+```bash
+git pull
+git lfs pull - при "рядовом" обновлении
+```
+
+## Добавлять и обнавлять файлы также - если добавится новый формат / отдельный файл, сначала `track` с помощью `git-lfs`, затем `push` в репозиторий
 
 ## P.S. преимущества `git-lfs`
 
